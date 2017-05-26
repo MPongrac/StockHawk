@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Stock Bar Chart Library</string>
+    <string name="bar_chart_description">Stock History</string>
+    <string name="bar_chart_no_data_msg">No data at the moment.</string>
+    <string name="bar_chart_content_description">This is a chart showing the
+        history of the selected stock over the past two years on a weekly basis.
+    It shows the Open, Low, High, and Close values for each week.</string>
+    <string name="data_set_open">Open</string>
+    <string name="data_set_low">Low</string>
+    <string name="data_set_high">High</string>
+    <string name="data_set_close">Close</string>
+</resources>

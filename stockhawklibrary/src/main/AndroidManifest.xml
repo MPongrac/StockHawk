@@ -1,0 +1,33 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.example.udacity.appmakermike.stockhawklibrary"
+>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.Manifest.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application android:allowBackup="true"
+                 android:label="@string/app_name"
+                 android:supportsRtl="true"
+                 tools:ignore="GoogleAppIndexingWarning"
+    >
+        <service
+            android:name="com.udacity.appmakermike.stockhawklibrary.stockhawklibrary.sync.QuoteIntentService"
+            android:exported="true"
+            tools:ignore="ExportedService"/>
+
+        <provider
+            android:name="com.udacity.appmakermike.stockhawklibrary.stockhawklibrary.data.StockProvider"
+            android:authorities="com.udacity.stockhawk"
+            android:exported="true"
+            tools:ignore="ExportedContentProvider"/>
+
+        <service
+            android:name="com.udacity.appmakermike.stockhawklibrary.stockhawklibrary.sync.QuoteJobService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+    </application>
+
+</manifest>

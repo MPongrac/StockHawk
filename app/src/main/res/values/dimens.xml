@@ -1,0 +1,36 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="padding_price_change">3dp</dimen>
+    <dimen name="padding_bid_price">10sp</dimen>
+
+    <!--The card view functionality may, or may not, get used.-->
+
+    <!--Dimensions for Graph Fragment-->
+
+    <!--
+Refer to App Widget Documentation for margin information
+http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
+-->
+    <dimen name="widget_margin">8dp</dimen>
+    <dimen name="padding_price">4sp</dimen>
+    <dimen name="widget_text_view_height">40dp</dimen>
+    <dimen name="widget_text_view_width">180dp</dimen>
+    <dimen name="widget_price_text_size">24sp</dimen>
+    <dimen name="widget_symbol_text_size">36sp</dimen>
+
+    <dimen name="fab_border_width">0dp</dimen>
+    <dimen name="fab_elevation">6dp</dimen>
+    <dimen name="fab_pressed_translation_z">12dp</dimen>
+    <dimen name="fab_layout_margin">16dp</dimen>
+    <dimen name="add_stock_layout_margin_std">4dp</dimen>
+    <dimen name="add_stock_layout_margin_top">16dp</dimen>
+
+    <dimen name="quote_item_horizontal_padding">16dp</dimen>
+    <dimen name="quote_item_price_horizontal_margin">10sp</dimen>
+    <dimen name="quote_item_price_change_horizontal_margin">3dp</dimen>
+    <dimen name="widget_empty_view_text_size">20sp</dimen>
+
+</resources>

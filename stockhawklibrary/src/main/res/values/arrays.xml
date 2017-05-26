@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="default_stocks">
+        <item>@string/default_stocks_apple</item>
+        <item>@string/default_stocks_amazon</item>
+        <item>@string/default_stocks_citigroup</item>
+
+        <!--This stock is not found-->
+        <!--<item>@string/default_stocks_dell</item>-->
+
+        <item>@string/default_stocks_facebook</item>
+        <item>@string/default_stocks_ge</item>
+
+        <item>@string/default_stocks_gm</item>
+        <item>@string/default_stocks_honeywell</item>
+        <item>@string/default_stocks_ibm</item>
+        <item>@string/default_stocks_jp_morgan</item>
+        <item>@string/default_stocks_coca_cola</item>
+
+        <item>@string/default_stocks_mc_donald</item>
+        <item>@string/default_stocks_3m</item>
+        <item>@string/default_stocks_microsoft</item>
+        <item>@string/default_stocks_tesla</item>
+        <item>@string/default_stocks_verizon</item>
+
+        <item>@string/default_stocks_exxon_mobile</item>
+        <item>@string/default_stocks_yahoo</item>
+
+    </string-array>
+</resources>

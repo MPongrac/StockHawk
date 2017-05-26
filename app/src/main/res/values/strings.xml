@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name" translatable="false">Stock Hawk</string>
+
+    <string name="pref_stocks_initialized_key" translatable="false">initialized</string>
+    <string name="pref_stocks_key" translatable="false">stocks</string>
+
+    <string name="pref_display_mode_key" translatable="false">displayMode</string>
+    <string name="pref_display_mode_default" translatable="false">@string/pref_display_mode_percentage_key</string>
+
+    <string name="pref_display_mode_absolute_key" translatable="false">absolute</string>
+    <string name="pref_display_mode_percentage_key" translatable="false">percentage</string>
+
+    <string name="action_change_units" translatable="false">@string/pref_display_mode_key</string>
+
+    <string name="dialog_title">Add Stock</string>
+    <string name="dialog_hint">Symbol (e.g. GOOG)</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_add">Add</string>
+
+    <string name="error_no_network">No network connectivity! Will load stock cursor when the network is available.</string>
+    <string name="error_no_stocks">No stocks added! Hit the floating action button to add one.</string>
+
+    <string name="snackbar_stock_added_no_connectivity">Symbol %s added. Will refresh when network available.</string>
+    <string name="snackbar_no_connectivity">Will refresh when network available.</string>
+
+    <string name="action_about">About</string>
+    <string name="title_activity_about">About</string>
+
+    <string name="no_network_connection_available">No Network Connection Available</string>
+    <string name="click_to_close">Click to Close</string>
+    <string name="stock_not_available">Symbol %s is not available.</string>
+
+    <string name="empty_view_text">This is the empty view</string>
+    <string name="plus_sign" translatable="false">+</string>
+    <string name="minus_sign" translatable="false">-</string>
+    <string name="empty_sign" translatable="false"/>
+
+    <string name="no_data_cursor">Could not get a cursor to the data!</string>
+    <string name="current_about_page">The current About page</string>
+    <string name="was_not_found">was not found.</string>
+
+    <string name="html_extension" translatable="false">.html</string>
+    <string name="default_language" translatable="false">EN</string>
+    <string name="about_asset_base" translatable="false">ABOUT_</string>
+    <string name="asset_file_base" translatable="false">file:///android_asset/</string>
+    <string name="def_about_page" translatable="false">file:///android_asset/ABOUT_EN.html</string>
+    <string name="main_thread_name" translatable="false">main</string>
+
+    <string name="widget_design_price_change" translatable="false">+2.7</string>
+    <string name="widget_design_price" translatable="false">142.7</string>
+    <string name="widget_design_symbol" translatable="false">TSLA</string>
+
+    <string name="quote_item_design_percent_change" translatable="false">100%</string>
+    <string name="quote_item_design_price" translatable="false">1000.00</string>
+    <string name="quote_item_design_symbol" translatable="false">GOOG</string>
+    <string name="widget_item_stock_quote_price_change">Widget item stock quote price change</string>
+    <string name="widget_item_stock_quote_symbol">widget item stock quote symbol</string>
+    <string name="widget_item_stock_quote_price">Widget item stock quote price</string>
+    <string name="popup_message">Popup Message</string>
+    <string name="popup_close_message">Popup - Close message</string>
+    <string name="list_item_quote_symbol">List item quote - symbol</string>
+    <string name="list_item_quote_price">List item quote - price</string>
+    <string name="list_item_quote_percent_changed">List item quote - percent changed</string>
+    <string name="floating_action_button_to_add_a_new_stock">Floating action button to add a new stock.</string>
+    <string name="error_message_control">Error message</string>
+    <string name="list_of_stock_quotes">List of stock quotes.</string>
+    <string name="swipe_an_entry_to_the_side_to_delete_it_from_the_list">Swipe an entry to the side to delete it from the list</string>
+    <string name="toolbar_description">Toolbar</string>
+    <string name="application_bar_description">Application bar</string>
+    <string name="about_page_content">About page content</string>
+
+    <!--The following string was removed since it belonged to a contentDescription
+    entry that conflicted with a hint in an edit text control.
+    <string name="add_a_new_stock_symbol">Add a new stock symbol.</string>-->
+    <string name="content_description_generated_symbol">Stock symbol</string>
+    <string name="content_description_generated_price">Current share price.</string>
+    <string name="content_description_generated_price_change">Change in share price.</string>
+    <string name="restriction_symbol_uppercase_letters_only">ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+
+</resources>

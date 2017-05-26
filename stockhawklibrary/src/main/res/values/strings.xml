@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">StockHawk</string>
+    <string name="pref_stocks_initialized_key" translatable="false">stocks_initialized
+    </string>
+    <string name="pref_invalid_stocks_initialized_key" translatable="false">invalid_initialized
+    </string>
+
+    <string name="pref_stocks_key" translatable="false">stocks</string>
+    <string name="pref_invalid_stocks_key" translatable="false">invalid_stocks</string>
+
+
+    <string name="pref_display_mode_key" translatable="false">displayMode</string>
+    <string name="pref_display_mode_default" translatable="false">@string/pref_display_mode_percentage_key</string>
+
+    <string name="pref_display_mode_absolute_key" translatable="false">absolute</string>
+    <string name="pref_display_mode_percentage_key">percentage</string>
+
+
+    <string name="default_stocks_apple" translatable="false">AAPL</string>
+    <string name="default_stocks_amazon" translatable="false">AMZN</string>
+    <string name="default_stocks_citigroup" translatable="false">C</string>
+    <string name="default_stocks_coca_cola" translatable="false">KO</string>
+    <!--This stock is not found-->
+    <string name="default_stocks_dell" translatable="false">DELL</string>
+
+    <string name="default_stocks_facebook" translatable="false">FB</string>
+    <string name="default_stocks_ge" translatable="false">GE</string>
+    <string name="default_stocks_gm" translatable="false">GM</string>
+    <string name="default_stocks_honeywell" translatable="false">HON</string>
+    <string name="default_stocks_ibm" translatable="false">IBM</string>
+
+    <string name="default_stocks_jp_morgan" translatable="false">JPM</string>
+    <string name="default_stocks_mc_donald" translatable="false">MCD</string>
+    <string name="default_stocks_3m" translatable="false">MMM</string>
+    <string name="default_stocks_microsoft" translatable="false">MSFT</string>
+    <string name="default_stocks_tesla" translatable="false">TSLA</string>
+
+    <string name="default_stocks_verizon" translatable="false">VZ</string>
+    <string name="default_stocks_exxon_mobile" translatable="false">XOM</string>
+    <string name="default_stocks_yahoo" translatable="false">YHOO</string>
+
+
+    <string name="action_change_units" translatable="false">@string/pref_display_mode_key</string>
+
+
+    <string name="dialog_title">Add Stock</string>
+    <string name="dialog_hint">Symbol (e.g. GOOG)</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_add">Add</string>
+
+    <string name="error_no_network">No network connectivity! Will load stock cursor when the network is available.</string>
+    <string name="error_no_stocks">No stocks added! Hit the floating action button to add one.</string>
+
+    <string name="snackbar_stock_added_no_connectivity">Symbol %s added. Will refresh when network available.</string>
+    <string name="snackbar_no_connectivity">Will refresh when network available.</string>
+</resources>

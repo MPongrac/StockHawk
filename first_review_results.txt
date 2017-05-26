@@ -1,0 +1,74 @@
+https://review.udacity.com/#!/reviews/509910
+
+
+
+
+TODO:
+-----
+
+Remove unnecessary (commented out) code.
+
+
+
+
+
+
+Done:
+-----
+
+Nice, your default stocks are saved on the strings.xml file, however, the translatable property is not set properly for some of them. Please review all your Strings and check if the translatable needs to be set.
+
+Please read more about it on the link below:
+
+http://tools.android.com/recent/non-translatablestrings
+
+
+
+Add content descriptions to text views. (stockAdapter.java 68 onBindViewHolder - programmatically created elements)
+
+
+
+Since your minimum API is 21, you need to replace all attributes that contain Left/Right with their Start/End options to take advantage of RTL layout mirroring. For example, android:paddingLeft should become android:paddingStart
+
+Please review this video and find more information about it on the documentation link below:
+
+https://android-developers.googleblog.com/2013/03/native-rtl-support-in-android-42.html
+
+Please remember to review all your layouts for those values.
+
+
+
+Great!, you are using inputType to enforce the input if capital letters, however, this allows the user to use shift and enter lowercase letters and also symbols. You should restrict the input to only uppercase letters to prevent any issue on your application.
+
+See the error I get when I try to add the symbol AASDASD#$%:
+
+https://gist.github.com/anonymous/4aa22fdc1bf32162dd04b984987101fc
+
+To be able to prevent it, you can add the following attribute to your EditText which will restrict the input to only uppercase letters.
+
+    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+The attribute above doesn't look that good but it's a fix that you can implement easily. Another possibility is to use regular expressions on your MainActivity as described in the post below:
+
+http://stackoverflow.com/a/26057433/3346625
+
+
+
+As a suggestion, you can replace all your Toasts with SnackBars which will improve your UI and give you a good looking message on your application. You can find more information about how to implement it here:
+
+https://developer.android.com/training/snackbar/index.html
+
+
+
+I see that you have an error in here when trying to open the History Chart
+
+https://gist.github.com/anonymous/1f8c5b224093186c48160bb0fea05972
+
+Note that the YahooFinanceAPI is down due to the following issue:
+
+https://github.com/sstrickx/yahoofinance-api/issues/75
+
+You should be receiving instructions very soon (please check your email) on how to submit this project as you will need create some Mock data to be able to display the Chart.
+
+
+

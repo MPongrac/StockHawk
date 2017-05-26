@@ -1,0 +1,49 @@
+https://review.udacity.com/#!/reviews/513606
+
+
+
+Project
+Stock Hawk
+A part of the Android Developer Nanodegree Program
+
+    Project Review
+    Code Review  11
+    Notes
+
+Share your accomplishment
+Requires Changes
+2 specifications require changes
+
+In general you did a good job and with some little efforts you'll get "Meet Specifications". Stay :udacious: !
+Required Components
+
+Each stock quote on the main screen is clickable and leads to a new screen which graphs the stock's value over time.
+
+Stock Hawk does not crash when a user searches for a non-existent stock.
+
+Stock Hawk Stocks can be displayed in a collection widget.
+
+The widget doesn't get updated when a stock is removed.
+
+Stock Hawk app has content descriptions for all buttons.
+
+Stock Hawk app supports layout mirroring using both the RTL attribute and the start/end tags.
+
+You have left/right attributes without accompanying start/end attributes. This ensures that dimensions are applied correctly across RTL locales such as Arabic.
+
+Strings are all included in the strings.xml file and untranslatable strings have a translatable tag marked to false.
+Required Behavior
+
+App conforms to common standards found in the Android Nanodegree General Project Guidelines.
+ Download Project
+11  Code Review Comments
+Best practices for your project resubmission
+
+Ben shares 5 helpful tips to get you through revising and resubmitting your project.
+
+ Watch Video (3:01)
+Rate this review
+( ) ( ) ( ) ( ) ( )
+
+    Student FAQ
+
