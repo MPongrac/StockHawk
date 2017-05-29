@@ -143,7 +143,8 @@ public class StackWidgetProvider extends AppWidgetProvider {
 //                                                 AppWidgetManager.INVALID_APPWIDGET_ID);
             int viewIndex = intent.getIntExtra(EXTRA_ITEM, 0);
 
-            currStockSymbol = (String) PrefUtils.getStocks(mContext).toArray()[viewIndex];
+            currStockSymbol = (String) PrefUtils.getStocks(
+                    mContext.getApplicationContext()).toArray()[viewIndex];
             showStockHistoryThread.start();
         }
         if (intent.getAction().equals(ACTION_DATA_UPDATED)) {

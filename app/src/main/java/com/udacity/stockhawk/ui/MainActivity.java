@@ -145,12 +145,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 String symbol = adapter.getSymbolAtPosition(viewHolder.getAdapterPosition());
                 // Remove the given stock from the shared preferences instance.
                 PrefUtils.removeStock(appContext, symbol);
-                PrefUtils.addInvalidStock(appContext, symbol);
                 // This removes all data, for the given stock, from the database.
                 getContentResolver().delete(Quote.makeUriForStock(symbol), null, null);
                 // Now, force an update of the UI and remaining data.
                 QuoteSyncJob.syncImmediately(appContext);
-//                onRefresh();
             }
         }).attachToRecyclerView(stockRecyclerView);
     }
@@ -255,6 +253,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             boolean matched = false;
             // Search for the current stock symbol in the provided data.
             if (data.getCount() > 0) {
+                // Make sure that we start at the beginning.
                 data.moveToFirst();
                 if (data.getString(Quote.POSITION_SYMBOL).matches(currStockSymbol)) {
                     matched = true;

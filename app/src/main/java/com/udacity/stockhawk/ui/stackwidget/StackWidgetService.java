@@ -30,7 +30,9 @@ import com.udacity.appmakermike.stockhawklibrary.stockhawklibrary.data.Contract;
 import com.udacity.appmakermike.stockhawklibrary.stockhawklibrary.data.PrefUtils;
 import com.udacity.stockhawk.R;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -50,6 +52,11 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
     private String[] mSigns;
     private String[] mPrices;
     private String[] mChanges;
+
+    private List<String> mListSymbols;
+    private List<String> mListSigns;
+    private List<String> mListPrices;
+    private List<String> mListChanges;
 
     private static int mCount;
 
@@ -83,6 +90,11 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         mSigns = new String[0];
         mPrices = new String[0];
         mChanges = new String[0];
+
+        mListSymbols = new ArrayList<String>();
+        mListSigns = new ArrayList<String>();
+        mListPrices = new ArrayList<String>();
+        mListChanges = new ArrayList<String>();
     }
 
     /**
@@ -113,6 +125,22 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         if (mExistingWidgetPositions != null) {
             mExistingWidgetPositions.clear();
         }
+        resetDataLists();
+    }
+
+    private void resetDataLists() {
+        if (mListSymbols != null){
+            mListSymbols.clear();
+        }
+        if (mListSigns != null){
+            mListSigns.clear();
+        }
+        if (mListPrices != null){
+            mListPrices.clear();
+        }
+        if (mListChanges != null){
+            mListChanges.clear();
+        }
     }
 
     /**
@@ -125,7 +153,7 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         String  sign;
         String  price;
         String  change;
-        Integer position = 0;
+        Integer position = -1;
 
         Set<String> stockPref  = PrefUtils.getStocks(mContext);
         int         prefSize   = stockPref.size();
@@ -158,6 +186,43 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
     }
 
     private void removeDataFromDeletedStock(Integer position, int prefSize, String[] stockArray) {
+        // Make sure that there is something to process.
+        if (position == -1) {
+            return;
+        }
+        String symbol;// We just removed a valid stock from the list.
+        String prefSymbol;// We just removed a valid stock from the list.
+        // That means that we have data for a stock that should not be there.
+        Timber.d("The two arrays do not match in size.  \n"+
+                         "We just removed a valid stock from the list.  \n" +
+                         "That means that we have data for a stock that " +
+                         "should not be there.  \n" +
+                         "mPrices.length: " + mPrices.length +
+                         " prefSize: " + prefSize +
+                         " mCount: " + mCount
+        );
+        prefSymbol = stockArray[position];
+        Integer key_del = null;
+        for (int i = 0; i < mListSymbols.size(); i++) {
+            symbol = mListSymbols.get(i);
+
+            if (mListSymbols.contains(symbol) &&
+                    symbol.compareToIgnoreCase(prefSymbol) == 0) {
+                key_del = i;
+                Timber.d("Removing " + i + " " + symbol +
+                                 " position: " + position + " prefSymbol: " + prefSymbol);
+                mExistingWidgetPositions.remove(key_del);
+                mExistingWidgets.remove(symbol);
+                removeDataArrayEntriesAtIndex(i);
+            }
+        }
+        if (key_del != null){
+            processBalancedLists(position, stockArray, mCount);
+        }
+    }
+
+    private void removeDataFromDeletedStock2(Integer position, int prefSize, String[]
+            stockArray) {
         String symbol;// We just removed a valid stock from the list.
         // That means that we have data for a stock that should not be there.
         Timber.d("The two arrays do not match in size.  \n"+
@@ -205,13 +270,14 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         String price;
         String sign;
         String change;
+
         for (int ii = 0; ii < mCount; ii++) {
             int i     = -1;
             int match = -1;
             while (i < mCount - 1 && i < stockArray.length - 1
-                    && ii < mSymbols.length - 1 && -1 == match) {
+                    && ii < mListSymbols.size() - 1 && -1 == match) {
                 i++;
-                if (mSymbols[ii].compareToIgnoreCase(stockArray[i]) == 0) {
+                if (mListSymbols.get(ii).compareToIgnoreCase(stockArray[i]) == 0) {
                     match = i;
                 }
             }
@@ -224,11 +290,11 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
                 match = newMax - 1;
             }
             i = match;
-            if (mPrices.length > 0) {
-                symbol = mSymbols[i];
-                price = mPrices[i];
-                sign = mSigns[i];
-                change = sign + mChanges[i];
+            if (mListPrices.size() > 0) {
+                symbol = mListSymbols.get(i);
+                price = mListPrices.get(i);
+                sign = mListSigns.get(i);
+                change = sign + mListChanges.get(i);
             } else {
                 // This is just dummy data to fill the initial layout, number formatting, and
                 // color coding.  The real data will be loaded via the onDataSetChanged()
@@ -278,10 +344,10 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
                 mChanges[i] = Changes[i];
             }
         }
-        mSymbols[new_array_size] = null;
-        mSigns[new_array_size] = null;
-        mPrices[new_array_size] = null;
-        mChanges[new_array_size] = null;
+        mSymbols[new_array_size - 1] = null;
+        mSigns[new_array_size - 1] = null;
+        mPrices[new_array_size - 1] = null;
+        mChanges[new_array_size - 1] = null;
 
         mCount = new_array_size;
     }
@@ -301,6 +367,16 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         mSigns = null;
         mPrices = null;
         mChanges = null;
+
+        mListSymbols.clear();
+        mListSigns.clear();
+        mListPrices.clear();
+        mListChanges.clear();
+
+        mListSymbols = null;
+        mListSigns = null;
+        mListPrices = null;
+        mListChanges = null;
     }
 
     /**
@@ -329,12 +405,39 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.widget_item);
 
         try {
-            WidgetItem widgetItem = mExistingWidgetPositions.get(position);
-            if (widgetItem != null) {
-                rv.setTextViewText(R.id.widget_item_symbol, widgetItem.symbol);
-                rv.setTextViewText(R.id.widget_item_price, widgetItem.currPrice);
-                rv.setTextViewText(R.id.widget_item_price_change, widgetItem.currPriceChange);
-                rv.setTextColor(R.id.widget_item_price_change, widgetItem.currChangeColor);
+//            WidgetItem widgetItem = mExistingWidgetPositions.get(position);
+//            if (widgetItem != null) {
+//                rv.setTextViewText(R.id.widget_item_symbol, widgetItem.symbol);
+//                rv.setTextViewText(R.id.widget_item_price, widgetItem.currPrice);
+//                rv.setTextViewText(R.id.widget_item_price_change, widgetItem.currPriceChange);
+//                rv.setTextColor(R.id.widget_item_price_change, widgetItem.currChangeColor);
+//
+//                // Next, we set a fill-intent which will be used to fill-in the pending intent template
+//                // which is set on the collection view in StackWidgetProvider.
+//                Bundle extras = new Bundle();
+//                extras.putInt(StackWidgetProvider.EXTRA_ITEM, position);
+//                Intent fillInIntent = new Intent();
+//                fillInIntent.putExtras(extras);
+//                rv.setOnClickFillInIntent(R.id.widget_item_symbol, fillInIntent);
+//            } else {
+//                // ?Remove the remote view?
+//                Timber.d("Remove widget item " + position
+//                                 + (mExistingWidgetPositions.get(position) ==
+//                                       null ? " " + mListSymbols.get(position) :
+//                                       " " + mExistingWidgetPositions.get(position).symbol)
+//                                 + " from remote view?");
+//                Timber.d(mExistingWidgetPositions.toString());
+//            }
+
+            String currPrice = mListPrices.get(position);
+            if (currPrice != null && !currPrice.isEmpty()) {
+                String sign = mListSigns.get(position);
+                String change = sign + mListChanges.get(position);
+                rv.setTextViewText(R.id.widget_item_symbol, mListSymbols.get(position));
+                rv.setTextViewText(R.id.widget_item_price, currPrice);
+                rv.setTextViewText(R.id.widget_item_price_change, change);
+                rv.setTextColor(R.id.widget_item_price_change,
+                                WidgetItem.getChangeColor(change));
 
                 // Next, we set a fill-intent which will be used to fill-in the pending intent template
                 // which is set on the collection view in StackWidgetProvider.
@@ -347,8 +450,8 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
                 // ?Remove the remote view?
                 Timber.d("Remove widget item " + position
                                  + (mExistingWidgetPositions.get(position) ==
-                                       null ? "" :
-                                       " " + mExistingWidgetPositions.get(position).symbol)
+                                            null ? " " + mListSymbols.get(position) :
+                                    " " + mExistingWidgetPositions.get(position).symbol)
                                  + " from remote view?");
                 Timber.d(mExistingWidgetPositions.toString());
             }
@@ -454,6 +557,8 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
             return;
         }
 
+        resetDataLists();
+
         int cursorCnt = mCursor.getCount();
 
         if (cursorCnt > 0) {
@@ -477,6 +582,10 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
                 if (mChanges[i].startsWith(mContext.getString(R.string.minus_sign))) {
                     mSigns[i] = mContext.getString(R.string.empty_sign);
                 }
+                mListSymbols.add(i, mSymbols[i]);
+                mListSigns.add(i, mSigns[i]);
+                mListPrices.add(i, mPrices[i]);
+                mListChanges.add(i, mChanges[i]);
             }
 
             if (mCount != cursorCnt){

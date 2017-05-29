@@ -44,12 +44,17 @@ public class WidgetItem {
         this.currPrice = formatPrice(price);
 
         // Check the sign of the price change before formatting it.
-        currChangeColor = Color.parseColor(COLOR_WIN);
-        if (priceChange.startsWith("-")) {
-            currChangeColor = Color.parseColor(COLOR_LOSS);
-        }
+        currChangeColor = getChangeColor(priceChange);
 
         this.currPriceChange = formatPriceChange(priceChange);
+    }
+
+    public static int getChangeColor(String priceChange) {
+        int changeColor = Color.parseColor(COLOR_WIN);
+        if (priceChange.startsWith("-")) {
+            changeColor = Color.parseColor(COLOR_LOSS);
+        }
+        return changeColor;
     }
 
     /**
