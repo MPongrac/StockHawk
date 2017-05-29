@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.udacity.appmakermike.stockhawklibrary.stockhawklibrary.data.Contract;
-import com.udacity.appmakermike.stockhawklibrary.stockhawklibrary.data.PrefUtils;
+import com.udacity.appmakermike.stockhawklibrary.data.Contract;
+import com.udacity.appmakermike.stockhawklibrary.data.PrefUtils;
 import com.udacity.stockhawk.R;
 
 import java.text.DecimalFormat;

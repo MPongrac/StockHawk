@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.udacity.appmakermike.stockbarchartlibrary.com.udacity.appmakermike.stockbarchartlibrary.stockbarchartlibrary.StockBarChartActivity"
+    tools:context="com.udacity.appmakermike.stockbarchartlibrary.StockBarChartActivity"
     tools:layout_editor_absoluteY="75dp"
     tools:layout_editor_absoluteX="0dp">
 

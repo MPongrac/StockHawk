@@ -7,10 +7,6 @@ Check out Udacity's [Advanced Android App Development](https://www.udacity.com/c
 
 If you're a Nanodegree student check your work againt the project [rubric](https://review.udacity.com/#!/rubrics/140/view), then click [here](https://classroom.udacity.com/nanodegrees/nd801/parts/8011345406/project) to submit your project.
 
-# Contrubuting
-
-Pull requests gratefully accepted.
-
 # Student Notes - Michael Pongrac AKA AppMakerMike
 
 When this app was successfully tested during the Hackathon on the 13th and 14th of May 
@@ -33,3 +29,9 @@ on a specific stock item, the appropriate graph is displayed.
 When the user is in the stock list of the app, they can use a swipe action to delete an
 existing stock from the list.
 
+## Update: 2017-05-29 
+
+With release 3.7.0, the YahooFinance API is, once again, delivering historical quote 
+details.
+
+All requirements should now be fulfilled. 

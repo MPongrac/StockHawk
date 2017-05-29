@@ -12,18 +12,18 @@
                  tools:ignore="GoogleAppIndexingWarning"
     >
         <service
-            android:name="com.udacity.appmakermike.stockhawklibrary.stockhawklibrary.sync.QuoteIntentService"
+            android:name="com.udacity.appmakermike.stockhawklibrary.sync.QuoteIntentService"
             android:exported="true"
             tools:ignore="ExportedService"/>
 
         <provider
-            android:name="com.udacity.appmakermike.stockhawklibrary.stockhawklibrary.data.StockProvider"
+            android:name="com.udacity.appmakermike.stockhawklibrary.data.StockProvider"
             android:authorities="com.udacity.stockhawk"
             android:exported="true"
             tools:ignore="ExportedContentProvider"/>
 
         <service
-            android:name="com.udacity.appmakermike.stockhawklibrary.stockhawklibrary.sync.QuoteJobService"
+            android:name="com.udacity.appmakermike.stockhawklibrary.sync.QuoteJobService"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />

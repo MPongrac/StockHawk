@@ -25,8 +25,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.widget.RemoteViews;
 
-import com.udacity.appmakermike.stockbarchartlibrary.stockbarchartlibrary.StockBarChartActivity;
-import com.udacity.appmakermike.stockhawklibrary.stockhawklibrary.data.PrefUtils;
+import com.udacity.appmakermike.stockbarchartlibrary.StockBarChartActivity;
+import com.udacity.appmakermike.stockhawklibrary.data.PrefUtils;
 import com.udacity.stockhawk.R;
 
 import java.io.IOException;
@@ -42,10 +42,10 @@ import yahoofinance.YahooFinance;
 import yahoofinance.histquotes.HistoricalQuote;
 import yahoofinance.histquotes.Interval;
 
-import static com.udacity.appmakermike.stockbarchartlibrary.stockbarchartlibrary.MPHistoricalQuote.serializeStringArrayHistoricalQuoteList;
-import static com.udacity.appmakermike.stockbarchartlibrary.stockbarchartlibrary.StockBarChartConstants.ARG_PARAM_STOCK_HISTORY;
-import static com.udacity.appmakermike.stockbarchartlibrary.stockbarchartlibrary.StockBarChartConstants.ARG_PARAM_STOCK_SYMBOL;
-import static com.udacity.appmakermike.stockhawklibrary.stockhawklibrary.sync.QuoteSyncJob.ACTION_DATA_UPDATED;
+import static com.udacity.appmakermike.stockbarchartlibrary.MPHistoricalQuote.serializeStringArrayHistoricalQuoteList;
+import static com.udacity.appmakermike.stockbarchartlibrary.StockBarChartConstants.ARG_PARAM_STOCK_HISTORY;
+import static com.udacity.appmakermike.stockbarchartlibrary.StockBarChartConstants.ARG_PARAM_STOCK_SYMBOL;
+import static com.udacity.appmakermike.stockhawklibrary.sync.QuoteSyncJob.ACTION_DATA_UPDATED;
 
 
 public class StackWidgetProvider extends AppWidgetProvider {
@@ -68,7 +68,7 @@ public class StackWidgetProvider extends AppWidgetProvider {
             List<HistoricalQuote>>();
     private static String  currStockSymbol;
     private static int[]   mAppWidgetIds;
-    private static Context mContext;
+    private Context mContext;
 
 
     /**
@@ -133,14 +133,8 @@ public class StackWidgetProvider extends AppWidgetProvider {
         myInterval = Interval.MONTHLY;
 
         AppWidgetManager mgr = AppWidgetManager.getInstance(mContext);
-//        if (intent.getAction().equals(android.appwidget.action.APPWIDGET_UPDATE)) {
-//
-//        }
 
         if (intent.getAction().equals(SNACKBAR_ACTION)) {
-            //noinspection UnusedAssignment
-//            int appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
-//                                                 AppWidgetManager.INVALID_APPWIDGET_ID);
             int viewIndex = intent.getIntExtra(EXTRA_ITEM, 0);
 
             currStockSymbol = (String) PrefUtils.getStocks(

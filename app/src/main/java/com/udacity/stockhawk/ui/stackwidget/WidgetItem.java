@@ -21,14 +21,16 @@ import android.graphics.Color;
 import java.text.DecimalFormat;
 
 
+
 @SuppressWarnings("WeakerAccess")
 public class WidgetItem {
-    @SuppressWarnings("CanBeFinal")
+    @SuppressWarnings({"CanBeFinal", "unused"})
     public String symbol;
-    @SuppressWarnings("CanBeFinal")
+    @SuppressWarnings({"CanBeFinal", "unused"})
     public String currPrice;
-    @SuppressWarnings("CanBeFinal")
+    @SuppressWarnings({"CanBeFinal", "unused"})
     public String currPriceChange;
+    @SuppressWarnings({"CanBeFinal", "unused"})
     public int    currChangeColor;
 
     public static final String PRICE_FORMAT = "$####0.00";
@@ -38,20 +40,25 @@ public class WidgetItem {
     private static final String COLOR_WIN  = "#00C853";
     private static final String COLOR_LOSS = "#D50000" ;
 
+    private static final String PLUS_SIGN  = "+";
+    private static final String MINUS_SIGN  = "-";
+    private static final String EMPTY_SIGN  = "";
+
+    @SuppressWarnings("unused")
     public WidgetItem(String strSymbol, String price, String priceChange) {
-        this.symbol = strSymbol;
+        symbol = strSymbol;
 
-        this.currPrice = formatPrice(price);
+        currPrice = formatPrice(price);
 
-        // Check the sign of the price change before formatting it.
+        // Check the sign of the price change before formatting the price.
         currChangeColor = getChangeColor(priceChange);
 
-        this.currPriceChange = formatPriceChange(priceChange);
+        currPriceChange = formatPriceChange(priceChange);
     }
 
     public static int getChangeColor(String priceChange) {
         int changeColor = Color.parseColor(COLOR_WIN);
-        if (priceChange.startsWith("-")) {
+        if (!priceChange.startsWith(PLUS_SIGN)) {
             changeColor = Color.parseColor(COLOR_LOSS);
         }
         return changeColor;
@@ -83,9 +90,9 @@ public class WidgetItem {
         String ret;
 
         DecimalFormat df = new DecimalFormat(PRICE_CHANGE_FORMAT);
-        String sign = "+";
-        if (priceChange.startsWith("-")) {
-            sign = "";
+        String sign = PLUS_SIGN;
+        if (priceChange.startsWith(MINUS_SIGN)) {
+            sign = EMPTY_SIGN;
         }
 
         float fPriceChange;

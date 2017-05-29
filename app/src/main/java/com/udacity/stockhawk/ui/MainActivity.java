@@ -29,9 +29,9 @@ import android.view.WindowManager;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.udacity.appmakermike.stockhawklibrary.stockhawklibrary.data.PrefUtils;
-import com.udacity.appmakermike.stockhawklibrary.stockhawklibrary.sync.QuoteSyncJob;
-import com.udacity.appmakermike.stockbarchartlibrary.stockbarchartlibrary.StockBarChartActivity;
+import com.udacity.appmakermike.stockhawklibrary.data.PrefUtils;
+import com.udacity.appmakermike.stockhawklibrary.sync.QuoteSyncJob;
+import com.udacity.appmakermike.stockbarchartlibrary.StockBarChartActivity;
 import com.udacity.stockhawk.R;
 
 import java.io.IOException;
@@ -50,10 +50,10 @@ import yahoofinance.YahooFinance;
 import yahoofinance.histquotes.HistoricalQuote;
 import yahoofinance.histquotes.Interval;
 
-import static com.udacity.appmakermike.stockbarchartlibrary.stockbarchartlibrary.MPHistoricalQuote.serializeStringArrayHistoricalQuoteList;
-import static com.udacity.appmakermike.stockbarchartlibrary.stockbarchartlibrary.StockBarChartConstants.ARG_PARAM_STOCK_HISTORY;
-import static com.udacity.appmakermike.stockbarchartlibrary.stockbarchartlibrary.StockBarChartConstants.ARG_PARAM_STOCK_SYMBOL;
-import static com.udacity.appmakermike.stockhawklibrary.stockhawklibrary.data.Contract.Quote;
+import static com.udacity.appmakermike.stockbarchartlibrary.MPHistoricalQuote.serializeStringArrayHistoricalQuoteList;
+import static com.udacity.appmakermike.stockbarchartlibrary.StockBarChartConstants.ARG_PARAM_STOCK_HISTORY;
+import static com.udacity.appmakermike.stockbarchartlibrary.StockBarChartConstants.ARG_PARAM_STOCK_SYMBOL;
+import static com.udacity.appmakermike.stockhawklibrary.data.Contract.Quote;
 
 @SuppressWarnings("DanglingJavadoc")
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>,
@@ -159,17 +159,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         NetworkInfo networkInfo = cm.getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isConnectedOrConnecting();
     }
-
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//    }
-//
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        Bundle savedInstanceState = new Bundle();
-//    }
 
     @Override
     public void onRefresh() {

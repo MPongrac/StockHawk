@@ -31,9 +31,6 @@
     <string name="stock_not_available">Symbol %s is not available.</string>
 
     <string name="empty_view_text">This is the empty view</string>
-    <string name="plus_sign" translatable="false">+</string>
-    <string name="minus_sign" translatable="false">-</string>
-    <string name="empty_sign" translatable="false"/>
 
     <string name="no_data_cursor">Could not get a cursor to the data!</string>
     <string name="current_about_page">The current About page</string>
